@@ -1,0 +1,19 @@
+Sesion global("global");  // constructores y destructor imprimen
+int main() {
+    Sesion a("a");
+    { Sesion b("b"); Sesion c("c", 2); }
+    std::cout << "--- medio ---\n";
+    Sesion d;
+}
+
+//Sesion global
+//sesion a
+//sesion b
+//sesion c , 2
+//sesion c
+//sesion b
+// medio
+// sesion d
+// sesion d
+// sesion a
+// sesion global
