@@ -1,0 +1,14 @@
+1. Etapa: compilación.
+   Corrección: revisar antes de "origen"; probablemente falta un punto y coma, llave o hay una declaración incompleta.
+
+2. Etapa: enlazado.
+   Corrección: definir Cuenta::depositar(double), corregir su firma o incluir su archivo al enlazar.
+
+3. Etapa: compilación.
+   Corrección: se está usando un std::string donde se requiere un int; convertirlo o corregir el tipo.
+
+4. Etapa: compilación.
+   Corrección: agregar #include <vector> y utilizar std::vector.
+
+5. Etapa: enlazado.
+   Corrección: doble(int) está definida más de una vez; dejarla en un solo .cpp o marcarla inline.
