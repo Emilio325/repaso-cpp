@@ -1,38 +1,53 @@
 #ifndef ARREGLO_H
 #define ARREGLO_H
 
+#include <iostream>
+
 class Arreglo {
 private:
-    int n;
     int* datos;
+    int n;
 
 public:
-    Arreglo(int n) : n(n), datos(new int[n]) {
+    Arreglo(int n) : datos(new int[n]{}), n(n) {
+        std::cout << "Constructor: " << datos << "\n";
     }
 
     ~Arreglo() {
+        std::cout << "Destructor: " << datos << "\n";
         delete[] datos;
     }
 
     Arreglo(const Arreglo& otro)
-        : n(otro.n), datos(new int[otro.n]) {
-        for (int i = 0; i < n; i++)
+        : datos(new int[otro.n]), n(otro.n) {
+        for (int i = 0; i < n; ++i)
             datos[i] = otro.datos[i];
     }
 
     Arreglo& operator=(const Arreglo& otro) {
-        if (this != &otro) {
-            int* nuevosDatos = new int[otro.n];
+        if (this == &otro)
+            return *this;
 
-            for (int i = 0; i < otro.n; i++)
-                nuevosDatos[i] = otro.datos[i];
+        delete[] datos;
+        n = otro.n;
+        datos = new int[n];
 
-            delete[] datos;
-            datos = nuevosDatos;
-            n = otro.n;
-        }
+        for (int i = 0; i < n; ++i)
+            datos[i] = otro.datos[i];
 
         return *this;
+    }
+
+    void set(int posicion, int valor) {
+        datos[posicion] = valor;
+    }
+
+    int get(int posicion) const {
+        return datos[posicion];
+    }
+
+    int tam() const {
+        return n;
     }
 };
 
